@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Site Name Here</h1>
+
+<p>Whatever else you want before the blog feed here.</p>
+<br>
+
+<h2>Latest Blog Posts:</h2>
+
+<div>
+
+{% for post in posts %}
+
+    <p>
+        <h3>{{post.date}} | <a href="posts/{{ post.slug }}.html">{{post.title}}</a> </h3>
+    </p>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
