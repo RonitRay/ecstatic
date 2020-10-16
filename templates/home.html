@@ -16,11 +16,11 @@ Home
 <div>
 
 {% for post in posts %}
-
+{% if post.blog == 'yes' %}
     <p>
         <h3>{{post.date}} | <a href="posts/{{ post.slug }}.html">{{post.title}}</a> </h3>
     </p>
-
+{% endif %}
 {% endfor %}
 
 </div>
