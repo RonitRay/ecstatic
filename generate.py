@@ -13,10 +13,10 @@ for markdown_post in os.listdir('content'):
 
     
 POSTS = {
-    post: POSTS[post] for post in sorted(POSTS, key=lambda post: datetime.strptime(POSTS[post].metadata['date'], '%Y-%m-%d'), reverse=True)
+    post: POSTS[post] for post in sorted(POSTS, key=lambda post: datetime.strptime(POSTS[post].metadata['date'], '%d-%m-%Y'), reverse=True)
 }
 
-env = Environment(loader=PackageLoader('main', 'templates'))
+env = Environment(loader=PackageLoader('generate', 'templates'))
 home_template = env.get_template('home.html')
 post_template = env.get_template('post.html')
 
@@ -24,7 +24,7 @@ posts_metadata = [POSTS[post].metadata for post in POSTS]
 tags = [post['tags'] for post in posts_metadata]
 home_html = home_template.render(posts=posts_metadata, tags=tags)
 
-with open('output/home.html', 'w') as file:
+with open('output/index.html', 'w') as file:
     file.write(home_html)
 
 for post in POSTS:
