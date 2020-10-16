@@ -4,7 +4,7 @@ from datetime import date
 post_title = "title: " + input("Enter title for post: ");
 
 today_date = date.today();
-post_date = "date: " + today_date.strftime("%d/%m/%Y");
+post_date = "date: " + today_date.strftime("%d-%m-%Y");
 
 post_tags = "tags: " + input("Enter a comma-separated list of tags for the post: ");
 post_summary = "summary: " + input("Enter a short summary for the post: ");
