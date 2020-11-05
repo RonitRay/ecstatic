@@ -21,7 +21,21 @@ home_template = env.get_template('home.html')
 post_template = env.get_template('post.html')
 
 posts_metadata = [POSTS[post].metadata for post in POSTS]
-tags = [post['tags'] for post in posts_metadata]
+tags = [];
+for post in posts_metadata:
+    if post['blog']=='yes':
+        tags.extend(post['tags'].split(', '));
+tags=list(set(tags));
+tags.sort();
+
+tag_template = env.get_template('tag.html')
+for tag in tags:
+    tagposts_metadata = [POSTS[post].metadata for post in POSTS if tag in POSTS[post].metadata['tags'].split(', ')]
+    tag_html = tag_template.render(tagposts=tagposts_metadata, tag=tag)
+    with open('output/posts/tag-'+tag+'.html', 'w') as file:
+        file.write(tag_html)
+        
+
 home_html = home_template.render(posts=posts_metadata, tags=tags)
 
 with open('output/index.html', 'w') as file:
@@ -33,7 +47,8 @@ for post in POSTS:
     post_data = {
         'content': POSTS[post],
         'title': post_metadata['title'],
-        'date': post_metadata['date']
+        'date': post_metadata['date'],
+        'blog': post_metadata['blog']
     }
 
     post_html = post_template.render(post=post_data)
@@ -42,3 +57,4 @@ for post in POSTS:
     os.makedirs(os.path.dirname(post_file_path), exist_ok=True)
     with open(post_file_path, 'w') as file:
         file.write(post_html)
+

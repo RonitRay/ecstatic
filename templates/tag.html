@@ -6,22 +6,11 @@ Home
 
 {% block content %}
 <div id='home-header'>
-<h1>Author</h1>
-<p>Author Bio</p>
+<h1>Author Name</h1>
+<h1>My Posts About {{tag}}</h1>
 </div>
-<br>
-<p>You can <strong>read my posts about:</strong> </p>
-<p>
-{% for tag in tags %}
-<a href=posts/tag-{{tag}}.html>{{tag}}</a> | 
-{% endfor %}
-</p>
-<br>
-<p>Or check out <strong>my latest posts:</strong></p>
 
-<div>
-
-{% for post in posts %}
+{% for post in tagposts %}
 {% if post.blog == 'yes' %}
     <p>
         {{post.date}} | <a href="posts/{{ post.slug }}.html">{{post.title}}</a> 
