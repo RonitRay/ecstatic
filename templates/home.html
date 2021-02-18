@@ -10,14 +10,12 @@ Home
 <p>Author Bio</p>
 </div>
 <br>
-<p>You can <strong>read my posts about:</strong> </p>
-<p>
+<p><strong>Posts About:</strong></p>
 {% for tag in tags %}
-<a href=posts/tag-{{tag}}.html>{{tag}}</a> | 
-{% endfor %}
-</p>
+<a href=posts/tag-{{tag}}.html>[{{tag}}]</a>&nbsp;&nbsp;&nbsp;
+{% endfor %}        
 <br>
-<p>Or check out <strong>my latest posts:</strong></p>
+<p><strong>Latest posts:</strong></p>
 
 <div>
 
