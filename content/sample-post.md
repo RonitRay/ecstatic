@@ -1,6 +1,6 @@
 ---
 title: Sample Post
-date: 2020-10-15
+date: 15-Oct-2020
 tags: sample
 summary: Some metadata, and Markdown all the way down.
 blog: yes

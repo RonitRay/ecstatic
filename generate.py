@@ -77,7 +77,7 @@ for tag in tags:
         file.write(tag_html)
 
 # renders the index.html homepage by passing all relevant data to the template
-home_html = home_template.render(posts=posts_metadata, tags=tags, activities=activities, updated=updated)
+home_html = home_template.render(posts=posts_metadata, tags=tags)
 
 with open('output/index.html', 'w') as file:
     file.write(home_html)
